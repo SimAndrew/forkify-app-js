@@ -37,9 +37,7 @@ export const loadRecipe = async function(id) {
     else
       state.recipe.bookmarked = false;
 
-    console.log(state.recipe);
   } catch (err) {
-    console.error(`${err}, 'ERROR'`);
     throw err;
   }
 };
@@ -105,7 +103,6 @@ const init = function() {
 init();
 
 export const uploadRecipe = async function(newRecipe) {
-  console.log(Object.entries(newRecipe));
 
   try {
     const ingredients = Object.entries(newRecipe).filter(entry => entry[0].startsWith('ingredient') && entry[1] !== '').map(ing => {
@@ -129,8 +126,6 @@ export const uploadRecipe = async function(newRecipe) {
     const data = await AJAX(`${API_URL}?key=${API_KEY}`, recipe);
     state.recipe = createRecipeObject(data);
     addBookmark(state.recipe);
-
-    console.log(data);
   } catch (err) {
     throw err;
   }

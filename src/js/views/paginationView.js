@@ -58,7 +58,6 @@ class PaginationView extends View {
         </button>
       `;
     }
-
     return '';
   }
 }
